@@ -1,5 +1,5 @@
 - id: pre-commit-dart
-  name: Dart Format, Analyze, and Test
+  name: Dart pre-commit
   description: This hook formats Dart code, runs analyzer and tests.
   entry: ./pre-commit.sh
   language: script
