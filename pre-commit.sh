@@ -6,6 +6,7 @@ WORKING_DIR="."
 FORMAT_ACTION=true
 ANALYZE_ACTION=true
 TEST_ACTION=true
+IS_FLUTTER=false
 
 for i in "$@"
 do
@@ -30,6 +31,10 @@ case $i in
     done
     shift
     ;;
+    --is-flutter=*)
+    IS_FLUTTER="${i#*=}"
+    shift
+    ;;
     *)
     ;;
 esac
@@ -38,12 +43,19 @@ done
 cd "$WORKING_DIR"
 
 if [ "$FORMAT_ACTION" = true ]; then
-  dart format --line-length="$LINE_LENGTH" .
-  git add .
+  dart format --line-length="$LINE_LENGTH" --set-exit-if-changed .
 fi
 if [ "$ANALYZE_ACTION" = true ]; then
-  dart analyze
+  if [ "$IS_FLUTTER" = true ]; then
+    flutter analyze
+  else
+    dart analyze
+  fi
 fi
 if [ "$TEST_ACTION" = true ]; then
-  dart test
+  if [ "$IS_FLUTTER" = true ]; then
+    flutter test
+  else
+    dart test
+  fi
 fi

@@ -9,7 +9,7 @@ Add the following in your `.pre-commit-config.yaml:
 
 ```
 - repo: https://github.com/baudee/pre-commit-dart
-  rev: v1.1.0
+  rev: v1.2.0
   hooks:
     - id: pre-commit-dart
 ```
@@ -18,7 +18,7 @@ You can also include or exclude files, by default it will only check files with 
 
 ```
 - repo: https://github.com/baudee/pre-commit-dart
-  rev: v1.1.0
+  rev: v1.2.0
   hooks:
     - id: pre-commit-dart
       files: lib/* 
@@ -28,7 +28,7 @@ You can also include or exclude files, by default it will only check files with 
 Finally, you can add some arguments to the pre-commit hook:
 ```
 - repo: https://github.com/baudee/pre-commit-dart
-  rev: v1.1.0
+  rev: v1.2.0
   hooks:
     - id: pre-commit-dart
       args: ['--line-length=120', '--dir=my_dir', '--actions=analyze,format']
@@ -36,11 +36,12 @@ Finally, you can add some arguments to the pre-commit hook:
 
 List of the arguments:
 
-| Argument | Description                                 | Default value |
-| --- |---------------------------------------------| --- |
-| `--line-length` | The line length that the formatter will use | `80` |
-| `--dir` | The working directory                       | `.` |
-| `--actions` | The actions to run, can be `analyze`, `format` or `test` | `analyze,format,test` |
+| Argument       | Description                                              | Default value         |
+|----------------|----------------------------------------------------------|-----------------------|
+| `--line-length` | The line length that the formatter will use              | `80`                  |
+| `--dir`        | The working directory                                    | `.`                   |
+| `--actions`    | The actions to run, can be `analyze`, `format` or `test` | `analyze,format,test` |
+| `--is-flutter`  | Define if it is a Flutter project                        | `false`               |
 
 Actions:
 * format: runs `dart format` on the files, and adds them to the commit
